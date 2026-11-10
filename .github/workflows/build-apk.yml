@@ -14,9 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Unpack CallMask
+      - name: Unpack CallMask 0.3
         run: |
-          unzip -q "CallMask_Android_Ready (1).zip"
+          unzip -q 'CallMask_v0.3_Source.zip'
           test -f CallMask/settings.gradle
 
       - name: Set up Java
@@ -30,7 +30,7 @@ jobs:
         with:
           packages: 'platform-tools'
 
-      - name: Install Android SDK
+      - name: Install SDK
         run: |
           sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
 
@@ -46,6 +46,6 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: CallMask-debug-APK
+          name: CallMask-v0.3-debug-APK
           path: CallMask/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
